@@ -85,6 +85,15 @@ class _CreateAccountState extends State<CreateAccount> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    findLocation();
+  }
+
+  Future<void> findLocation()async {}
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
