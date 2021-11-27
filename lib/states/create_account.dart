@@ -66,7 +66,7 @@ class _CreateAccountState extends State<CreateAccount> {
     );
   }
 
-    Container newAge() {
+  Container newAge() {
     return Container(
       decoration: MyConstant().whiteBox(),
       margin: EdgeInsets.only(top: 16),
@@ -91,52 +91,81 @@ class _CreateAccountState extends State<CreateAccount> {
         backgroundColor: MyConstant.primary,
         title: Text('Create new Account'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            newName(),
-            newTitle('Type User :'),
-            radioUser(),
-            radioHospital(),
-            newEmail(),
-            newPassword(),
-            newAge(),
-          ],
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(
+          FocusScopeNode(),
+        ),
+        behavior: HitTestBehavior.opaque,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              newName(),
+              newTitle('Type User :'),
+              radioUser(),
+              radioHospital(),
+              newEmail(),
+              newPassword(),
+              newAge(),
+              newTitle('Your Location :'),
+              Container(
+                color: Colors.grey,
+                width: 300,
+                height: 200,
+                child: Text('Map'),
+              ),
+              buttonCreateAccount(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  RadioListTile<String> radioUser() {
-    return RadioListTile(
-            subtitle: ShowText(data: 'ผู้ใช้งาน'),
-            title: ShowText(
-              data: 'User',
-            ),
-            value: 'user',
-            groupValue: typeUser,
-            onChanged: (value) {
-              setState(() {
-                typeUser = value.toString();
-              });
-            },
-          );
+  Container buttonCreateAccount() {
+    return Container(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {},
+        child: Text('Create New Account'),
+      ),
+    );
   }
 
-    RadioListTile<String> radioHospital() {
-    return RadioListTile(
-            subtitle: ShowText(data: 'โรงพยาบาล'),
-            title: ShowText(
-              data: 'Hospital',
-            ),
-            value: 'user',
-            groupValue: typeUser,
-            onChanged: (value) {
-              setState(() {
-                typeUser = value.toString();
-              });
-            },
-          );
+  Container radioUser() {
+    return Container(
+      width: 250,
+      child: RadioListTile(
+        subtitle: ShowText(data: 'ผู้ใช้งาน'),
+        title: ShowText(
+          data: 'User',
+        ),
+        value: 'user',
+        groupValue: typeUser,
+        onChanged: (value) {
+          setState(() {
+            typeUser = value.toString();
+          });
+        },
+      ),
+    );
+  }
+
+  Widget radioHospital() {
+    return Container(
+      child: RadioListTile(
+        subtitle: ShowText(data: 'โรงพยาบาล'),
+        title: ShowText(
+          data: 'Hospital',
+        ),
+        value: 'user',
+        groupValue: typeUser,
+        onChanged: (value) {
+          setState(() {
+            typeUser = value.toString();
+          });
+        },
+      ),
+    );
   }
 
   Row newTitle(String title) {
