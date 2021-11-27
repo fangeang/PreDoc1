@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:predoc1/utility/my_constant.dart';
 import 'package:predoc1/widgets/show_text.dart';
 
@@ -11,6 +12,7 @@ class CreateAccount extends StatefulWidget {
 
 class _CreateAccountState extends State<CreateAccount> {
   String? typeUser;
+  double? lat, lng;
 
   Container newName() {
     return Container(
@@ -91,7 +93,28 @@ class _CreateAccountState extends State<CreateAccount> {
     findLocation();
   }
 
-  Future<void> findLocation()async {}
+  Future<void> findLocation() async {
+    Position? position = await findPostion();
+    setState(
+      () {
+        lat = position!.latitude;
+        lng = position.longitude;
+        print('lat = $lat, lng = $lng');
+      },
+    );
+  }
+
+  Future<Position?> findPostion() async {
+    Position? position;
+
+    try {
+      position = await Geolocator.getCurrentPosition();
+    } catch (e) {
+      return null;
+    }
+
+    return position;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,17 +139,22 @@ class _CreateAccountState extends State<CreateAccount> {
               newPassword(),
               newAge(),
               newTitle('Your Location :'),
-              Container(
-                color: Colors.grey,
-                width: 300,
-                height: 200,
-                child: Text('Map'),
-              ),
+              newMap(),
               buttonCreateAccount(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Container newMap() {
+    return Container(
+      width: 300,
+      height: 200,
+      child: lat == null
+          ? Center(child: CircularProgressIndicator())
+          : Text('$lat, $lng'),
     );
   }
 
