@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "637683358444",
+    "project_id": "predoc-14e1d",
+    "storage_bucket": "predoc-14e1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637683358444:android:7f2c888593050e97cb63c9",
+        "android_client_info": {
+          "package_name": "com.flutterthailand.predoc1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637683358444-uas4dc96u0c9bb3rm9kt8do8b3nqgtah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKCtP6I_dIVtOvZovUvu1mqeIy_CqmQlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637683358444-uas4dc96u0c9bb3rm9kt8do8b3nqgtah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

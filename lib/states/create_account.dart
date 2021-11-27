@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:predoc1/models/user_model.dart';
 import 'package:predoc1/utility/my_constant.dart';
 import 'package:predoc1/utility/my_dialog.dart';
 import 'package:predoc1/widgets/show_text.dart';
@@ -16,6 +20,9 @@ class _CreateAccountState extends State<CreateAccount> {
   String? typeUser;
   double? lat, lng;
   final formKey = GlobalKey<FormState>();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   Container newName() {
     return Container(
@@ -23,6 +30,7 @@ class _CreateAccountState extends State<CreateAccount> {
       margin: const EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        controller: nameController,
         validator: (value) {
           if (value!.isEmpty) {
             return 'กรุณากรอกชื่อด้วยค่ะ';
@@ -48,6 +56,7 @@ class _CreateAccountState extends State<CreateAccount> {
       margin: EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        controller: emailController,
         validator: (value) {
           if (value!.isEmpty) {
             return 'กรุณากรอก E-mail ด้วยค่ะ';
@@ -70,9 +79,10 @@ class _CreateAccountState extends State<CreateAccount> {
   Container newPassword() {
     return Container(
       decoration: MyConstant().whiteBox(),
-      margin: EdgeInsets.only(top: 16),
+      margin: const EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        controller: passwordController,
         validator: (value) {
           if (value!.isEmpty) {
             return 'กรุณากรอกรหัสผ่านด้วยค่ะ';
@@ -85,8 +95,8 @@ class _CreateAccountState extends State<CreateAccount> {
             Icons.password_outlined,
             color: MyConstant.dark,
           ),
-          label: ShowText(data: 'Passowrd :'),
-          border: OutlineInputBorder(),
+          label: const ShowText(data: 'Passowrd :'),
+          border: const OutlineInputBorder(),
         ),
       ),
     );
@@ -225,11 +235,43 @@ class _CreateAccountState extends State<CreateAccount> {
     );
   }
 
-  void processRegister() {
+  Future<void> processRegister() async {
     if (formKey.currentState!.validate()) {
       if (typeUser == null) {
-        MyDialog().normalDialog(context, 'Type User Non ?', 'Please Choose Type User');
+        MyDialog().normalDialog(
+            context, 'Type User Non ?', 'Please Choose Type User');
       } else {
+        await Firebase.initializeApp().then(
+          (value) async {
+            print('Initial Success');
+            await FirebaseAuth.instance
+                .createUserWithEmailAndPassword(
+                    email: emailController.text,
+                    password: passwordController.text)
+                .then((value) async {
+              String uid = value.user!.uid;
+              print('Register Success uid ==> $uid');
+
+              UserModel model = UserModel(
+                  email: emailController.text,
+                  lat: lat!,
+                  lng: lng!,
+                  name: nameController.text,
+                  password: passwordController.text,
+                  typeuser: typeUser!);
+
+              await FirebaseFirestore.instance
+                  .collection('user')
+                  .doc(uid)
+                  .set(model.toMap())
+                  .then((value) => Navigator.pop(context));
+            }).catchError((value) {
+              String title = value.code;
+              String message = value.message;
+              MyDialog().normalDialog(context, title, message);
+            });
+          },
+        );
       }
     }
   }
