@@ -6,7 +6,7 @@
         android:label="predoc1"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="YOUR KEY HERE"/>
+               android:value="AIzaSyADqgXllYTdp9sP5evmChCFhXhW9gZ6s0M"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

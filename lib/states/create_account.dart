@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:predoc1/utility/my_constant.dart';
+import 'package:predoc1/utility/my_dialog.dart';
 import 'package:predoc1/widgets/show_text.dart';
 
 class CreateAccount extends StatefulWidget {
@@ -13,13 +15,21 @@ class CreateAccount extends StatefulWidget {
 class _CreateAccountState extends State<CreateAccount> {
   String? typeUser;
   double? lat, lng;
+  final formKey = GlobalKey<FormState>();
 
   Container newName() {
     return Container(
       decoration: MyConstant().whiteBox(),
-      margin: EdgeInsets.only(top: 16),
+      margin: const EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'กรุณากรอกชื่อด้วยค่ะ';
+          } else {
+            return null;
+          }
+        },
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.fingerprint,
@@ -38,6 +48,13 @@ class _CreateAccountState extends State<CreateAccount> {
       margin: EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'กรุณากรอก E-mail ด้วยค่ะ';
+          } else {
+            return null;
+          }
+        },
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.email_outlined,
@@ -56,6 +73,13 @@ class _CreateAccountState extends State<CreateAccount> {
       margin: EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'กรุณากรอกรหัสผ่านด้วยค่ะ';
+          } else {
+            return null;
+          }
+        },
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.password_outlined,
@@ -74,6 +98,13 @@ class _CreateAccountState extends State<CreateAccount> {
       margin: EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'กรุณากรอกอายุด้วยค่ะ';
+          } else {
+            return null;
+          }
+        },
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.password_outlined,
@@ -120,6 +151,12 @@ class _CreateAccountState extends State<CreateAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () => processRegister(),
+            icon: Icon(Icons.cloud_upload_outlined),
+          ),
+        ],
         backgroundColor: MyConstant.primary,
         title: Text('Create new Account'),
       ),
@@ -129,19 +166,22 @@ class _CreateAccountState extends State<CreateAccount> {
         ),
         behavior: HitTestBehavior.opaque,
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              newName(),
-              newTitle('Type User :'),
-              radioUser(),
-              radioHospital(),
-              newEmail(),
-              newPassword(),
-              newAge(),
-              newTitle('Your Location :'),
-              newMap(),
-              buttonCreateAccount(),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                newName(),
+                newTitle('Type User :'),
+                radioUser(),
+                radioHospital(),
+                newEmail(),
+                newPassword(),
+                newAge(),
+                newTitle('Your Location :'),
+                newMap(),
+                buttonCreateAccount(),
+              ],
+            ),
           ),
         ),
       ),
@@ -154,7 +194,22 @@ class _CreateAccountState extends State<CreateAccount> {
       height: 200,
       child: lat == null
           ? Center(child: CircularProgressIndicator())
-          : Text('$lat, $lng'),
+          : GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(lat!, lng!),
+                zoom: 16,
+              ),
+              onMapCreated: (controller) {},
+              markers: <Marker>{
+                Marker(
+                  markerId: MarkerId('id'),
+                  position: LatLng(lat!, lng!),
+                  infoWindow: InfoWindow(
+                      title: 'คุณอยู่ที่นี่',
+                      snippet: 'lat = $lat, lng = $lng'),
+                )
+              },
+            ),
     );
   }
 
@@ -162,10 +217,21 @@ class _CreateAccountState extends State<CreateAccount> {
     return Container(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          processRegister();
+        },
         child: Text('Create New Account'),
       ),
     );
+  }
+
+  void processRegister() {
+    if (formKey.currentState!.validate()) {
+      if (typeUser == null) {
+        MyDialog().normalDialog(context, 'Type User Non ?', 'Please Choose Type User');
+      } else {
+      }
+    }
   }
 
   Container radioUser() {
