@@ -117,7 +117,7 @@ class _CreateAccountState extends State<CreateAccount> {
         },
         decoration: InputDecoration(
           prefixIcon: Icon(
-            Icons.password_outlined,
+            Icons.calendar_today,
             color: MyConstant.dark,
           ),
           label: ShowText(data: 'Age :'),
@@ -276,40 +276,35 @@ class _CreateAccountState extends State<CreateAccount> {
     }
   }
 
-  Container radioUser() {
-    return Container(
-      width: 250,
-      child: RadioListTile(
-        subtitle: ShowText(data: 'ผู้ใช้งาน'),
-        title: ShowText(
-          data: 'User',
-        ),
-        value: 'user',
-        groupValue: typeUser,
-        onChanged: (value) {
-          setState(() {
-            typeUser = value.toString();
-          });
-        },
+  RadioListTile<String> radioUser() {
+    return RadioListTile(
+      subtitle: ShowText(data: 'ผู้ใช้งาน'),
+      title: ShowText(
+        data: 'User',
       ),
+      value: 'user',
+      groupValue: typeUser,
+      onChanged: (value) {
+        setState(() {
+          typeUser = value.toString();
+        });
+      },
     );
   }
 
-  Widget radioHospital() {
-    return Container(
-      child: RadioListTile(
-        subtitle: ShowText(data: 'โรงพยาบาล'),
-        title: ShowText(
-          data: 'Hospital',
-        ),
-        value: 'user',
-        groupValue: typeUser,
-        onChanged: (value) {
-          setState(() {
-            typeUser = value.toString();
-          });
-        },
+  RadioListTile<String> radioHospital() {
+    return RadioListTile(
+      subtitle: ShowText(data: 'โรงพยาบาล'),
+      title: ShowText(
+        data: 'Hospital',
       ),
+      value: 'user',
+      groupValue: typeUser,
+      onChanged: (value) {
+        setState(() {
+          typeUser = value.toString();
+        });
+      },
     );
   }
 
