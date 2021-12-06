@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:predoc1/utility/my_constant.dart';
 import 'package:predoc1/widgets/show_image.dart';
@@ -11,6 +14,10 @@ class Authen extends StatefulWidget {
 }
 
 class _AuthenState extends State<Authen> {
+  bool statusRedEye = true;
+  final formKey = GlobalKey<FormState>();
+  TextEditingController userController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,16 +30,19 @@ class _AuthenState extends State<Authen> {
           decoration: MyConstant().gradienBox(),
           child: Center(
             child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  newImage(),
-                  newAppName(),
-                  newUser(),
-                  newPassword(),
-                  newLogIn(),
-                  newCreateAccount()
-                ],
+              child: Form(
+                key: formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    newImage(),
+                    newAppName(),
+                    newUser(),
+                    newPassword(),
+                    newLogIn(),
+                    newCreateAccount()
+                  ],
+                ),
               ),
             ),
           ),
@@ -60,18 +70,37 @@ class _AuthenState extends State<Authen> {
       width: 250,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () {},
+        onPressed: () {
+          if (formKey.currentState!.validate()) {
+            String user = userController.text;
+            String password = passwordController.text;
+            print('## user = $user, password = $password');
+            Navigator.pushNamed(context, '/diagnose');
+          }
+        },
         child: Text('Login'),
       ),
     );
   }
 
+  Future<Null> checkAuthen() async {
+    String apiCheckAuthen = '';
+  }
+
   Container newUser() {
     return Container(
       decoration: MyConstant().whiteBox(),
-      margin: EdgeInsets.only(top: 16),
+      margin: const EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        controller: userController,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Please Fill Username in Blank';
+          } else {
+            return null;
+          }
+        },
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.perm_identity,
@@ -87,17 +116,43 @@ class _AuthenState extends State<Authen> {
   Container newPassword() {
     return Container(
       decoration: MyConstant().whiteBox(),
-      margin: EdgeInsets.only(top: 16),
+      margin: const EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
-        obscureText: true,
+        controller: passwordController,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'PLease Fill Password in Blank';
+          } else {
+            return null;
+          }
+        },
+        obscureText: statusRedEye,
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.lock_outline,
             color: MyConstant.dark,
           ),
-          label: ShowText(data: 'Password :'),
-          border: OutlineInputBorder(),
+          suffixIcon: IconButton(
+            onPressed: () {
+              setState(
+                () {
+                  statusRedEye = !statusRedEye;
+                },
+              );
+            },
+            icon: statusRedEye
+                ? const Icon(
+                    Icons.remove_red_eye,
+                    color: Colors.black,
+                  )
+                : const Icon(
+                    Icons.remove_red_eye_outlined,
+                    color: Colors.black,
+                  ),
+          ),
+          label: const ShowText(data: 'Password :'),
+          border: const OutlineInputBorder(),
         ),
       ),
     );

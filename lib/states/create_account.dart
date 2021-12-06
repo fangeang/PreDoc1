@@ -17,6 +17,7 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
+  bool statusRedEye = true;
   String? typeUser;
   double? lat, lng;
   final formKey = GlobalKey<FormState>();
@@ -82,6 +83,7 @@ class _CreateAccountState extends State<CreateAccount> {
       margin: const EdgeInsets.only(top: 16),
       width: 250,
       child: TextFormField(
+        obscureText: statusRedEye,
         controller: passwordController,
         validator: (value) {
           if (value!.isEmpty) {
@@ -94,6 +96,24 @@ class _CreateAccountState extends State<CreateAccount> {
           prefixIcon: Icon(
             Icons.password_outlined,
             color: MyConstant.dark,
+          ),
+          suffixIcon: IconButton(
+            onPressed: () {
+              setState(
+                () {
+                  statusRedEye = !statusRedEye;
+                },
+              );
+            },
+            icon: statusRedEye
+                ? const Icon(
+                    Icons.remove_red_eye,
+                    color: Colors.black,
+                  )
+                : const Icon(
+                    Icons.remove_red_eye_outlined,
+                    color: Colors.black,
+                  ),
           ),
           label: const ShowText(data: 'Passowrd :'),
           border: const OutlineInputBorder(),
@@ -229,6 +249,7 @@ class _CreateAccountState extends State<CreateAccount> {
       child: ElevatedButton(
         onPressed: () {
           processRegister();
+          onPressed: () => Navigator.pushNamed(context, '/diagnose');
         },
         child: Text('Create New Account'),
       ),
@@ -248,28 +269,32 @@ class _CreateAccountState extends State<CreateAccount> {
                 .createUserWithEmailAndPassword(
                     email: emailController.text,
                     password: passwordController.text)
-                .then((value) async {
-              String uid = value.user!.uid;
-              print('Register Success uid ==> $uid');
+                .then(
+              (value) async {
+                String uid = value.user!.uid;
+                print('Register Success uid ==> $uid');
 
-              UserModel model = UserModel(
-                  email: emailController.text,
-                  lat: lat!,
-                  lng: lng!,
-                  name: nameController.text,
-                  password: passwordController.text,
-                  typeuser: typeUser!);
+                UserModel model = UserModel(
+                    email: emailController.text,
+                    lat: lat!,
+                    lng: lng!,
+                    name: nameController.text,
+                    password: passwordController.text,
+                    typeuser: typeUser!);
 
-              await FirebaseFirestore.instance
-                  .collection('user')
-                  .doc(uid)
-                  .set(model.toMap())
-                  .then((value) => Navigator.pop(context));
-            }).catchError((value) {
-              String title = value.code;
-              String message = value.message;
-              MyDialog().normalDialog(context, title, message);
-            });
+                await FirebaseFirestore.instance
+                    .collection('user')
+                    .doc(uid)
+                    .set(model.toMap())
+                    .then((value) => Navigator.pop(context));
+              },
+            ).catchError(
+              (value) {
+                String title = value.code;
+                String message = value.message;
+                MyDialog().normalDialog(context, title, message);
+              },
+            );
           },
         );
       }
