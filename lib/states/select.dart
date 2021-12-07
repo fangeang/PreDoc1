@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:predoc1/utility/my_constant.dart';
 
-// ปวดหัว
-
-class Menu extends StatefulWidget {
-  const PopupMenuEntry({Key? key}) : super(key: key);
+class Select extends StatefulWidget {
+  const Select({Key? key}) : super(key: key);
 
   @override
-  _MenuState createState() => _MenuState();
+  _SelectState createState() => _SelectState();
 }
 
-class _MenuState extends State<Menu> {
+class _SelectState extends State<Select> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(
-          FocusScopeNode(),
-        ),
+        onTap: () => FocusScope.of(context).requestFocus(FocusScopeNode()),
         behavior: HitTestBehavior.opaque,
         child: SafeArea(
           child: SingleChildScrollView(
             child: Stack(
               children: [
-                backButton(context),
                 content(),
               ],
             ),
@@ -39,58 +34,44 @@ class _MenuState extends State<Menu> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'คุณมีอาการปวดหัวอย่างไร?',
+            'คุณกำลังค้นหาอะไร ?',
             style: MyConstant().h2Style(),
           ),
-          med3Button(),
-          med4Button(),
+          diagnose(),
         ],
       ),
     );
   }
 
-  IconButton backButton(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.navigate_before,
-        size: 36.0,
-      ),
-      onPressed: () => Navigator.pushNamed(context, '/diagnose'),
-    );
-  }
-
-// ปวดหัวครึ่งซีก
-  Container med3Button() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 48),
-      width: 250,
-      height: 50,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
-        child: const Text(
-          'ปวดหัวครึ่งซีก',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-
-// ปวดหัวทั้งซ้ายและขวา
-  Container med4Button() {
+  Container diagnose() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 0.25),
       width: 250,
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
-          'ปวดหัวทั้งซ้ายและขวา',
+          'ทำแบบประเมินโรคเบื้องต้นจากอาการของผู้ใช้งาน',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+
+  Container hospital() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 0.25),
+      width: 250,
+      height: 50,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
+        onPressed: () => Navigator.pushNamed(context, '/'),
+        child: const Text(
+          'ค้นหาสถานพยาบาลใกล้เคียงคุณ',
           style: TextStyle(fontSize: 20),
         ),
       ),
     );
   }
 }
-
