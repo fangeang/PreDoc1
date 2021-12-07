@@ -115,6 +115,7 @@ class _DiagnoseState extends State<Diagnose> {
           med95Button(),
           med96Button(),
           med97Button(),
+          finishButton(),
         ],
       ),
     );
@@ -126,7 +127,7 @@ class _DiagnoseState extends State<Diagnose> {
         Icons.navigate_before,
         size: 36.0,
       ),
-      onPressed: () => Navigator.pushNamed(context, '/authen'),
+      onPressed: () => Navigator.pushNamed(context, '/select'),
     );
   }
 
@@ -1414,6 +1415,22 @@ class _DiagnoseState extends State<Diagnose> {
         onPressed: () => Navigator.pushNamed(context, '/level'),
         child: const Text(
           'หายใจลำบาก',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+
+  Container finishButton() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 0.25),
+      width: 250,
+      height: 50,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
+        onPressed: () => Navigator.pushNamed(context, '/select'),
+        child: const Text(
+          'กลับไป',
           style: TextStyle(fontSize: 20),
         ),
       ),

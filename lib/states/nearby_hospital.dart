@@ -11,8 +11,6 @@ import 'package:predoc1/widgets/show_text.dart';
 
 class NearbyHospital extends StatefulWidget {
   const NearbyHospital({Key? key}) : super(key: key);
-  
-  final formKey = GlobalKey<FormState>();
 
   @override
   _NearbyHospitalState createState() => _NearbyHospitalState();
@@ -23,7 +21,7 @@ class _NearbyHospitalState extends State<NearbyHospital> {
   bool statusRedEye = true;
   String? typeUser;
   double? lat, lng;
-  
+  final formKey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,47 +35,22 @@ class _NearbyHospitalState extends State<NearbyHospital> {
         ),
         behavior: HitTestBehavior.opaque,
         child: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                newMap(),
-                find_hospital(),
-              ],
-            ),
+          child: Column(
+            children: [
+              newMap(),
+              //findLocation(),
+            ],
           ),
         ),
       ),
     );
   }
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     findLocation();
-  }
-  Container newMap() {
-    return Container(
-      width: 300,
-      height: 200,
-      child: lat == null
-          ? Center(child: CircularProgressIndicator())
-          : GoogleMap(
-              initialCameraPosition: CameraPosition(
-                target: LatLng(lat!, lng!),
-                zoom: 16,
-              ),
-              onMapCreated: (controller) {},
-              markers: <Marker>{
-                Marker(
-                  markerId: MarkerId('id'),
-                  position: LatLng(lat!, lng!),
-                  infoWindow: InfoWindow(
-                      title: 'คุณอยู่ที่นี่',
-                      snippet: 'lat = $lat, lng = $lng'),
-                )
-              },
-            ),
-    );
   }
 
   Future<void> findLocation() async {
@@ -91,15 +64,40 @@ class _NearbyHospitalState extends State<NearbyHospital> {
     );
   }
 
-  Container find_hospital() {
+  Future<Position?> findPostion() async {
+    Position? position;
+
+    try {
+      position = await Geolocator.getCurrentPosition();
+    } catch (e) {
+      return null;
+    }
+
+    return position;
+  }
+
+  Container newMap() {
     return Container(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {
-          newMap();
-        },
-        child: Text('Create New Account'),
-      ),
+      width: 500,
+      height: 650,
+      child: lat == null
+          ? Center(child: CircularProgressIndicator())
+          : GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(lat!, lng!),
+                zoom: 100,
+              ),
+              onMapCreated: (controller) {},
+              markers: <Marker>{
+                Marker(
+                  markerId: MarkerId('id'),
+                  position: LatLng(lat!, lng!),
+                  infoWindow: InfoWindow(
+                      title: 'คุณอยู่ที่นี่',
+                      snippet: 'lat = $lat, lng = $lng'),
+                )
+              },
+            ),
     );
   }
 }

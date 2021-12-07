@@ -19,6 +19,7 @@ class CreateAccount extends StatefulWidget {
 class _CreateAccountState extends State<CreateAccount> {
   bool statusRedEye = true;
   String? typeUser;
+  String? typeHospital;
   double? lat, lng;
   final formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
@@ -323,11 +324,11 @@ class _CreateAccountState extends State<CreateAccount> {
       title: ShowText(
         data: 'Hospital',
       ),
-      value: 'user',
-      groupValue: typeUser,
+      value: 'hospital',
+      groupValue: typeHospital,
       onChanged: (value) {
         setState(() {
-          typeUser = value.toString();
+          typeHospital = value.toString();
         });
       },
     );

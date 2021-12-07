@@ -62,6 +62,7 @@ class _SelectState extends State<Select> {
 
   Container hospital() {
     return Container(
+      padding: const EdgeInsets.all(16.0),
       margin: const EdgeInsets.symmetric(vertical: 0.25),
       width: 250,
       height: 50,
