@@ -38,6 +38,7 @@ class _SelectState extends State<Select> {
             style: MyConstant().h2Style(),
           ),
           diagnose(),
+          hospital(),
         ],
       ),
     );
@@ -66,7 +67,7 @@ class _SelectState extends State<Select> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/nearbyHospital'),
         child: const Text(
           'ค้นหาสถานพยาบาลใกล้เคียงคุณ',
           style: TextStyle(fontSize: 20),

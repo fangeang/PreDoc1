@@ -1,0 +1,105 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:predoc1/models/user_model.dart';
+import 'package:predoc1/utility/my_constant.dart';
+import 'package:predoc1/utility/my_dialog.dart';
+import 'package:predoc1/widgets/show_text.dart';
+
+class NearbyHospital extends StatefulWidget {
+  const NearbyHospital({Key? key}) : super(key: key);
+  
+  final formKey = GlobalKey<FormState>();
+
+  @override
+  _NearbyHospitalState createState() => _NearbyHospitalState();
+}
+
+class _NearbyHospitalState extends State<NearbyHospital> {
+  @override
+  bool statusRedEye = true;
+  String? typeUser;
+  double? lat, lng;
+  
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: MyConstant.primary,
+        title: Text('Find Nearby Hospital'),
+      ),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(
+          FocusScopeNode(),
+        ),
+        behavior: HitTestBehavior.opaque,
+        child: SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                newMap(),
+                find_hospital(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    findLocation();
+  }
+  Container newMap() {
+    return Container(
+      width: 300,
+      height: 200,
+      child: lat == null
+          ? Center(child: CircularProgressIndicator())
+          : GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(lat!, lng!),
+                zoom: 16,
+              ),
+              onMapCreated: (controller) {},
+              markers: <Marker>{
+                Marker(
+                  markerId: MarkerId('id'),
+                  position: LatLng(lat!, lng!),
+                  infoWindow: InfoWindow(
+                      title: 'คุณอยู่ที่นี่',
+                      snippet: 'lat = $lat, lng = $lng'),
+                )
+              },
+            ),
+    );
+  }
+
+  Future<void> findLocation() async {
+    Position? position = await findPostion();
+    setState(
+      () {
+        lat = position!.latitude;
+        lng = position.longitude;
+        print('lat = $lat, lng = $lng');
+      },
+    );
+  }
+
+  Container find_hospital() {
+    return Container(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {
+          newMap();
+        },
+        child: Text('Create New Account'),
+      ),
+    );
+  }
+}

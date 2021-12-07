@@ -57,7 +57,7 @@ class _AuthenState extends State<Authen> {
       children: [
         const ShowText(data: 'Non Account ?'),
         TextButton(
-          onPressed: () => Navigator.pushNamed(context, '/createaccount'),
+          onPressed: () => Navigator.pushNamed(context, '/createAccount'),
           child: const Text('Create Account'),
         ),
       ],
@@ -75,7 +75,7 @@ class _AuthenState extends State<Authen> {
             String user = userController.text;
             String password = passwordController.text;
             print('## user = $user, password = $password');
-            Navigator.pushNamed(context, '/diagnose');
+            Navigator.pushNamed(context, '/select');
           }
         },
         child: Text('Login'),
