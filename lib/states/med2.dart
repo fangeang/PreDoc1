@@ -15,9 +15,7 @@ class _Med2State extends State<Med2> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(
-          FocusScopeNode(),
-        ),
+        onTap: () => FocusScope.of(context).requestFocus(FocusScopeNode()),
         behavior: HitTestBehavior.opaque,
         child: SafeArea(
           child: SingleChildScrollView(
@@ -58,7 +56,6 @@ class _Med2State extends State<Med2> {
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
     );
   }
-
 // ปวดหัวครึ่งซีก
   Container med3Button() {
     return Container(
@@ -75,7 +72,6 @@ class _Med2State extends State<Med2> {
       ),
     );
   }
-
 // ปวดหัวทั้งซ้ายและขวา
   Container med4Button() {
     return Container(

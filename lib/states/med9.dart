@@ -34,11 +34,7 @@ class _Med9State extends State<Med9> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            'ปวดท้อง',
-            style: MyConstant().h2Style(),
-          ),
-          med10Button(),
+         Text('ปวดท้อง',style: MyConstant().h2Style(),),med10Button(),
         ],
       ),
     );
@@ -53,7 +49,7 @@ class _Med9State extends State<Med9> {
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
     );
   }
-
+  
   Container med10Button() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 0.25),
@@ -69,8 +65,7 @@ class _Med9State extends State<Med9> {
       ),
     );
   }
-
-  Container med11Button() {
+Container med11Button() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 0.25),
       width: 250,
@@ -102,4 +97,5 @@ class _Med9State extends State<Med9> {
       ),
     );
   }
+
 }

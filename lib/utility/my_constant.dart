@@ -13,7 +13,8 @@ class MyConstant {
   BoxDecoration whiteBox() => BoxDecoration(color: Colors.white54);
 
   BoxDecoration gradienBox() => BoxDecoration(
-        gradient: RadialGradient(center: Alignment(0,-0.5),
+        gradient: RadialGradient(
+          center: Alignment(0, -0.5),
           radius: 1.0,
           colors: [Colors.white, primary],
         ),
@@ -32,6 +33,11 @@ class MyConstant {
       );
 
   TextStyle h3Style() => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.normal,
+        color: dark,
+      );
+  TextStyle h4Style() => TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.normal,
         color: dark,

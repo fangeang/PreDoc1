@@ -35,13 +35,11 @@ class _Med7State extends State<Med7> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'คุณมีอาการกล้ามเนื้ออ่อนแรงตรงไหน?',
+            'ปากคุณเบี้ยวไปทางไหน?',
             style: MyConstant().h2Style(),
           ),
-          righthandButton(),
-          lefthandButton(),
-          rightlegButton(),
-          leftlegButton(),
+          leftButton(),
+          rightButton(),
         ],
       ),
     );
@@ -57,67 +55,34 @@ class _Med7State extends State<Med7> {
     );
   }
 
-// ขาซ้าย
-  Container leftlegButton() {
+// ข้างซ้าย
+  Container leftButton() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 16),
       width: 250,
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
-          'ขาซ้าย',
+          'ข้างซ้าย',
           style: TextStyle(fontSize: 20),
         ),
       ),
     );
   }
 
-// ขาขวา
-  Container rightlegButton() {
+  // ข้างขวา
+  Container rightButton() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 16),
       width: 250,
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
-          'ขาขวา',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-
-  Container lefthandButton() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 16),
-      width: 250,
-      height: 50,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
-        child: const Text(
-          'มือซ้าย',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-
-// มือขวา
-  Container righthandButton() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 16),
-      width: 250,
-      height: 50,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
-        child: const Text(
-          'มือขวา',
+          'ข้างขวา',
           style: TextStyle(fontSize: 20),
         ),
       ),

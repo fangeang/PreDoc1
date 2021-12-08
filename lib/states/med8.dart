@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:predoc1/utility/my_constant.dart';
 
 class Med8 extends StatefulWidget {
-  const Med8({Key? key}) : super(key: key);
+  const Med8({ Key? key }) : super(key: key);
 
   @override
   _Med8State createState() => _Med8State();
@@ -11,8 +11,7 @@ class Med8 extends StatefulWidget {
 class _Med8State extends State<Med8> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GestureDetector(
+    return Scaffold(body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusScopeNode()),
         behavior: HitTestBehavior.opaque,
         child: SafeArea(
@@ -26,18 +25,15 @@ class _Med8State extends State<Med8> {
           ),
         ),
       ),
+      
     );
   }
-
   Widget content() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            'ปวดท้อง',
-            style: MyConstant().h2Style(),
-          ),
+         Text('คุณมีอาการชาบริเวณใด ?',style: MyConstant().h2Style(),),
         ],
       ),
     );
@@ -52,7 +48,6 @@ class _Med8State extends State<Med8> {
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
     );
   }
-
 // ชา
   Container med8Button() {
     return Container(
@@ -61,7 +56,7 @@ class _Med8State extends State<Med8> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
           'ชา',
           style: TextStyle(fontSize: 20),
@@ -69,7 +64,6 @@ class _Med8State extends State<Med8> {
       ),
     );
   }
-
 // ชามือ
   Container med84Button() {
     return Container(
@@ -78,7 +72,7 @@ class _Med8State extends State<Med8> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
           'ชามือ',
           style: TextStyle(fontSize: 20),
@@ -86,7 +80,6 @@ class _Med8State extends State<Med8> {
       ),
     );
   }
-
 // ชาเท้า
   Container med85Button() {
     return Container(
@@ -95,7 +88,7 @@ class _Med8State extends State<Med8> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
           'ชาเท้า',
           style: TextStyle(fontSize: 20),
@@ -103,7 +96,6 @@ class _Med8State extends State<Med8> {
       ),
     );
   }
-
 // ชาริมฝีปาก
   Container med86Button() {
     return Container(
@@ -112,7 +104,7 @@ class _Med8State extends State<Med8> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
           'ชาริมฝีปาก',
           style: TextStyle(fontSize: 20),
@@ -120,7 +112,6 @@ class _Med8State extends State<Med8> {
       ),
     );
   }
-
 // ชารอบปาก
   Container med87Button() {
     return Container(
@@ -129,7 +120,7 @@ class _Med8State extends State<Med8> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
           'ชารอบปาก',
           style: TextStyle(fontSize: 20),
@@ -137,7 +128,6 @@ class _Med8State extends State<Med8> {
       ),
     );
   }
-
 // ชาลิ้น
   Container med88Button() {
     return Container(
@@ -146,7 +136,7 @@ class _Med8State extends State<Med8> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
           'ชาลิ้น',
           style: TextStyle(fontSize: 20),
@@ -154,7 +144,6 @@ class _Med8State extends State<Med8> {
       ),
     );
   }
-
 // ชาคอ
   Container med89Button() {
     return Container(
@@ -163,7 +152,7 @@ class _Med8State extends State<Med8> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
           'ชาคอ',
           style: TextStyle(fontSize: 20),
@@ -171,4 +160,5 @@ class _Med8State extends State<Med8> {
       ),
     );
   }
+  
 }

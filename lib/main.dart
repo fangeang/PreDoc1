@@ -18,6 +18,10 @@ import 'package:predoc1/states/service_user.dart';
 import 'package:predoc1/states/med9.dart';
 import 'package:predoc1/states/med7.dart';
 import 'package:predoc1/states/med16.dart';
+import 'package:predoc1/states/diagnose2.dart';
+import 'package:predoc1/states/diagnose3.dart';
+import 'package:predoc1/states/diagnose4.dart';
+import 'package:predoc1/states/diagnose5.dart';
 
 Map<String, WidgetBuilder> map = {
   '/authen': (BuildContext context) => const Authen(),
@@ -25,6 +29,10 @@ Map<String, WidgetBuilder> map = {
   '/serviceUser': (BuildContext context) => const ServiceUser(),
   '/serviceDriver': (BuildContext context) => const ServiceHospital(),
   '/diagnose': (BuildContext context) => const Diagnose(),
+  '/diagnose2': (BuildContext context) => const Diagnose2(),
+  '/diagnose3': (BuildContext context) => const Diagnose3(),
+  '/diagnose4': (BuildContext context) => const Diagnose4(),
+  '/diagnose5': (BuildContext context) => const Diagnose5(),
   '/med2': (BuildContext context) => const Med2(),
   '/med6' : (BuildContext context) => const Med6(),
   '/med7' : (BuildContext context) => const Med7(),

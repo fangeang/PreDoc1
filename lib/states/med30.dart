@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:predoc1/utility/my_constant.dart';
 
 class Med30 extends StatefulWidget {
-  const Med30({Key? key}) : super(key: key);
+  const Med30({ Key? key }) : super(key: key);
 
   @override
   _Med30State createState() => _Med30State();
@@ -11,8 +11,7 @@ class Med30 extends StatefulWidget {
 class _Med30State extends State<Med30> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GestureDetector(
+    return Scaffold(body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusScopeNode()),
         behavior: HitTestBehavior.opaque,
         child: SafeArea(
@@ -26,18 +25,16 @@ class _Med30State extends State<Med30> {
           ),
         ),
       ),
+      
     );
   }
 
-  Widget content() {
+Widget content() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            'ปวดท้อง',
-            style: MyConstant().h2Style(),
-          ),
+         Text('สิ่งที่อาเจียนออกมามีลักษณะอย่างไร ?',style: MyConstant().h2Style(),),
         ],
       ),
     );
@@ -60,7 +57,7 @@ class _Med30State extends State<Med30> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/med16'),
         child: const Text(
           'อาเจียน',
           style: TextStyle(fontSize: 20),
@@ -68,7 +65,6 @@ class _Med30State extends State<Med30> {
       ),
     );
   }
-
 // อาเจียนมีสีเหลืองปนเขียว
   Container med70Button() {
     return Container(
@@ -77,7 +73,7 @@ class _Med30State extends State<Med30> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/level'),
+        onPressed: () => Navigator.pushNamed(context, '/med16'),
         child: const Text(
           'อาเจียนมีสีเหลืองปนเขียว',
           style: TextStyle(fontSize: 20),
@@ -85,4 +81,7 @@ class _Med30State extends State<Med30> {
       ),
     );
   }
+
+  
+
 }

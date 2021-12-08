@@ -35,9 +35,10 @@ class _Med22State extends State<Med22> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'ปวดท้อง',
+            'อาการร้าวตามร่างกาย',
             style: MyConstant().h2Style(),
           ),
+          
         ],
       ),
     );
@@ -52,7 +53,6 @@ class _Med22State extends State<Med22> {
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
     );
   }
-
 // อาการร้าวไหล่ซ้าย ด้านในของแขนซ้าย
   Container med22Button() {
     return Container(
@@ -103,9 +103,8 @@ class _Med22State extends State<Med22> {
       ),
     );
   }
-
 // แขนขวา
-  Container med25Button() {
+Container med25Button() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 0.25),
       width: 250,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:predoc1/utility/my_constant.dart';
 
 class Med69 extends StatefulWidget {
-  const Med69({Key? key}) : super(key: key);
+  const Med69({ Key? key }) : super(key: key);
 
   @override
   _Med69State createState() => _Med69State();
@@ -11,8 +11,7 @@ class Med69 extends StatefulWidget {
 class _Med69State extends State<Med69> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GestureDetector(
+    return Scaffold( body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusScopeNode()),
         behavior: HitTestBehavior.opaque,
         child: SafeArea(
@@ -28,16 +27,12 @@ class _Med69State extends State<Med69> {
       ),
     );
   }
-
-  Widget content() {
+   Widget content() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            'ปวดท้อง',
-            style: MyConstant().h2Style(),
-          ),
+         Text('อุจจาระมีความผิดปกติ',style: MyConstant().h2Style(),),
         ],
       ),
     );
@@ -52,7 +47,6 @@ class _Med69State extends State<Med69> {
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
     );
   }
-
 // อุจจาระ
   Container med69Button() {
     return Container(
@@ -69,7 +63,6 @@ class _Med69State extends State<Med69> {
       ),
     );
   }
-
 // อุจจาระเหนียว เป็นมูก มีเลือดปน
   Container med71Button() {
     return Container(
@@ -86,9 +79,8 @@ class _Med69State extends State<Med69> {
       ),
     );
   }
-
 // อุจจาระยาก
-  Container med72Button() {
+   Container med72Button() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 0.25),
       width: 250,
@@ -103,9 +95,8 @@ class _Med69State extends State<Med69> {
       ),
     );
   }
-
 // อุจจาระเหม็น
-  Container med73Button() {
+   Container med73Button() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 0.25),
       width: 250,
@@ -120,9 +111,8 @@ class _Med69State extends State<Med69> {
       ),
     );
   }
-
 // อุจจาระนุ่ม
-  Container med74Button() {
+   Container med74Button() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 0.25),
       width: 250,
@@ -137,9 +127,8 @@ class _Med69State extends State<Med69> {
       ),
     );
   }
-
 // อุจจาระลอยน้ำ
-  Container med75Button() {
+   Container med75Button() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 0.25),
       width: 250,
@@ -154,4 +143,7 @@ class _Med69State extends State<Med69> {
       ),
     );
   }
+
+  
+  
 }
