@@ -23,7 +23,10 @@ class _LevelState extends State<Level> {
             child: Stack(
               children: [
                 backButton(context),
-                content(),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 16),
+                  child: content(),
+                ),
               ],
             ),
           ),
@@ -46,6 +49,7 @@ class _LevelState extends State<Level> {
           radioLevel3(),
           radioLevel4(),
           radioLevel5(),
+          submitButton(),
         ],
       ),
     );
@@ -58,6 +62,31 @@ class _LevelState extends State<Level> {
         size: 36.0,
       ),
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
+    );
+  }
+
+  Container submitButton() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      width: 100,
+      height: 30,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
+        child: const Text(
+          'ยืนยัน',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+
+  Row showSubmitButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        submitButton(),
+      ],
     );
   }
 

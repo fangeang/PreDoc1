@@ -46,9 +46,9 @@ class _SelectState extends State<Select> {
 
   Container diagnose() {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 0.25),
+      margin: const EdgeInsets.symmetric(vertical: 16),
       width: 250,
-      height: 50,
+      height: 55,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
         onPressed: () => Navigator.pushNamed(context, '/diagnose'),
@@ -63,9 +63,9 @@ class _SelectState extends State<Select> {
   Container hospital() {
     return Container(
       padding: const EdgeInsets.all(16.0),
-      margin: const EdgeInsets.symmetric(vertical: 0.25),
+      margin: const EdgeInsets.symmetric(vertical: 16),
       width: 250,
-      height: 50,
+      height: 60  ,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
         onPressed: () => Navigator.pushNamed(context, '/nearbyHospital'),

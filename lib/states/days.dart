@@ -79,7 +79,7 @@ class _DaysState extends State<Days> {
       height: 30,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
           'ยืนยัน',
           style: TextStyle(fontSize: 20),

@@ -63,7 +63,7 @@ class _Med7State extends State<Med7> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
           'ข้างซ้าย',
           style: TextStyle(fontSize: 20),
@@ -80,7 +80,7 @@ class _Med7State extends State<Med7> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
           'ข้างขวา',
           style: TextStyle(fontSize: 20),
