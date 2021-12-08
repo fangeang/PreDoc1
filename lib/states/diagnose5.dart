@@ -37,7 +37,8 @@ class _Diagnose5State extends State<Diagnose5> {
           Text(
             'คุณมีอาการอย่างไร',
             style: MyConstant().h2Style(),
-          ),pageButton(),
+          ),
+          pageButton(),
           med79Button(),
           med80Button(),
           med81Button(),
@@ -50,12 +51,13 @@ class _Diagnose5State extends State<Diagnose5> {
           med95Button(),
           med96Button(),
           med97Button(),
+          finishButton(),
         ],
       ),
     );
   }
 
-   Row pageButton() {
+  Row pageButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -73,35 +75,50 @@ class _Diagnose5State extends State<Diagnose5> {
   TextButton page1() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
-      child:  Text('1',style: MyConstant().h4Style(),),
+      child: Text(
+        '1',
+        style: MyConstant().h4Style(),
+      ),
     );
   }
 
   TextButton page2() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose2'),
-      child:  Text('2',style: MyConstant().h4Style(),),
+      child: Text(
+        '2',
+        style: MyConstant().h4Style(),
+      ),
     );
   }
 
   TextButton page3() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose3'),
-      child:  Text('3',style: MyConstant().h4Style(),),
+      child: Text(
+        '3',
+        style: MyConstant().h4Style(),
+      ),
     );
   }
 
   TextButton page4() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose4'),
-      child:  Text('4',style: MyConstant().h4Style(),),
+      child: Text(
+        '4',
+        style: MyConstant().h4Style(),
+      ),
     );
   }
 
   TextButton page5() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose5'),
-      child:  Text('5',style: MyConstant().h3Style(),),
+      child: Text(
+        '5',
+        style: MyConstant().h3Style(),
+      ),
     );
   }
 
@@ -124,7 +141,6 @@ class _Diagnose5State extends State<Diagnose5> {
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
     );
   }
-
 
   IconButton backButton(BuildContext context) {
     return IconButton(
@@ -220,6 +236,7 @@ class _Diagnose5State extends State<Diagnose5> {
       ),
     );
   }
+
 // การมองเห็ฯผิดปกติ
   Container med90Button() {
     return Container(
@@ -333,6 +350,22 @@ class _Diagnose5State extends State<Diagnose5> {
         onPressed: () => Navigator.pushNamed(context, '/level'),
         child: const Text(
           'หายใจลำบาก',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+
+  Container finishButton() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      width: 250,
+      height: 50,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
+        onPressed: () => Navigator.pushNamed(context, '/disease'),
+        child: const Text(
+          'วิเคราะห์โรค',
           style: TextStyle(fontSize: 20),
         ),
       ),

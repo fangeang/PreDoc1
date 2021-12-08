@@ -79,7 +79,7 @@ class _Med16State extends State<Med16> {
       height: 30,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
           'ยืนยัน',
           style: TextStyle(fontSize: 20),

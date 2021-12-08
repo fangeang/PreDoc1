@@ -3,6 +3,7 @@ import 'package:predoc1/states/authen.dart';
 import 'package:predoc1/states/create_account.dart';
 import 'package:predoc1/states/days.dart';
 import 'package:predoc1/states/diagnose.dart';
+import 'package:predoc1/states/disease.dart';
 import 'package:predoc1/states/med16.dart';
 import 'package:predoc1/states/med2.dart';
 import 'package:predoc1/states/level.dart';
@@ -46,6 +47,7 @@ Map<String, WidgetBuilder> map = {
   '/days': (BuildContext context) => const Days(),
   '/select': (BuildContext context) => const Select(),
   '/nearbyHospital': (BuildContext context) => const NearbyHospital(),
+  '/disease': (BuildContext context) => const Disease(),
 };
 
 String firstPage = '/authen';

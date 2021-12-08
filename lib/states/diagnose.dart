@@ -58,7 +58,6 @@ class _DiagnoseState extends State<Diagnose> {
           med19Button(),
           med20Button(),
           med21Button(),
-          finishButton(),
         ],
       ),
     );
@@ -182,7 +181,7 @@ class _DiagnoseState extends State<Diagnose> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/headache'),
+        onPressed: () => Navigator.pushNamed(context, '/med2'),
         child: const Text(
           'ปวดหัว',
           style: TextStyle(fontSize: 20),
@@ -225,7 +224,7 @@ class _DiagnoseState extends State<Diagnose> {
     );
   }
 
-// ปากเบั้ยว/หน้าเบี้ยว
+// ปากเบี้ยว/หน้าเบี้ยว
   Container med7Button() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 16),
@@ -235,7 +234,7 @@ class _DiagnoseState extends State<Diagnose> {
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
         onPressed: () => Navigator.pushNamed(context, '/level'),
         child: const Text(
-          'ปากเบั้ยว/หน้าเบี้ยว',
+          'ปากเบี้ยว/หน้าเบี้ยว',
           style: TextStyle(fontSize: 20),
         ),
       ),
@@ -267,7 +266,7 @@ class _DiagnoseState extends State<Diagnose> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/stomach'),
+        onPressed: () => Navigator.pushNamed(context, '/med9'),
         child: const Text(
           'ปวดท้อง',
           style: TextStyle(fontSize: 20),
@@ -423,22 +422,6 @@ class _DiagnoseState extends State<Diagnose> {
         onPressed: () => Navigator.pushNamed(context, '/level'),
         child: const Text(
           'ไอมีเสมหะ',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-
-  Container finishButton() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 0.25),
-      width: 250,
-      height: 50,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/select'),
-        child: const Text(
-          'กลับไป',
           style: TextStyle(fontSize: 20),
         ),
       ),

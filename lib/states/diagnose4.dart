@@ -37,7 +37,11 @@ class _Diagnose4State extends State<Diagnose4> {
           Text(
             'คุณมีอาการอย่างไร',
             style: MyConstant().h2Style(),
-          ),pageButton(),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 16),
+            child: pageButton(),
+          ),
           med57Button(),
           med58Button(),
           med59Button(),
@@ -59,7 +63,7 @@ class _Diagnose4State extends State<Diagnose4> {
     );
   }
 
-   Row pageButton() {
+  Row pageButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -77,35 +81,50 @@ class _Diagnose4State extends State<Diagnose4> {
   TextButton page1() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose'),
-      child:  Text('1',style: MyConstant().h4Style(),),
+      child: Text(
+        '1',
+        style: MyConstant().h4Style(),
+      ),
     );
   }
 
   TextButton page2() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose2'),
-      child:  Text('2',style: MyConstant().h4Style(),),
+      child: Text(
+        '2',
+        style: MyConstant().h4Style(),
+      ),
     );
   }
 
   TextButton page3() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose3'),
-      child:  Text('3',style: MyConstant().h4Style(),),
+      child: Text(
+        '3',
+        style: MyConstant().h4Style(),
+      ),
     );
   }
 
   TextButton page4() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose4'),
-      child:  Text('4',style: MyConstant().h3Style(),),
+      child: Text(
+        '4',
+        style: MyConstant().h3Style(),
+      ),
     );
   }
 
   TextButton page5() {
     return TextButton(
       onPressed: () => Navigator.pushNamed(context, '/diagnose5'),
-      child:  Text('5',style: MyConstant().h4Style(),),
+      child: Text(
+        '5',
+        style: MyConstant().h4Style(),
+      ),
     );
   }
 
@@ -129,7 +148,6 @@ class _Diagnose4State extends State<Diagnose4> {
     );
   }
 
-
   IconButton backButton(BuildContext context) {
     return IconButton(
       icon: const Icon(
@@ -148,7 +166,7 @@ class _Diagnose4State extends State<Diagnose4> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
           'ภาวะเลือดออกผิดปกติ',
           style: TextStyle(fontSize: 20),
@@ -199,7 +217,7 @@ class _Diagnose4State extends State<Diagnose4> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
           'เดินเซ',
           style: TextStyle(fontSize: 20),
@@ -267,7 +285,7 @@ class _Diagnose4State extends State<Diagnose4> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
           'กระสับกระส่าย',
           style: TextStyle(fontSize: 20),
@@ -301,7 +319,7 @@ class _Diagnose4State extends State<Diagnose4> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/'),
+        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
         child: const Text(
           'หน้าแดง',
           style: TextStyle(fontSize: 20),
