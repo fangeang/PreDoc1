@@ -38,7 +38,9 @@ class _Diagnose5State extends State<Diagnose5> {
             'คุณมีอาการอย่างไร',
             style: MyConstant().h2Style(),
           ),
-          pageButton(),
+          Container(
+              margin: const EdgeInsets.symmetric(vertical: 16),
+              child: pageButton()),
           med79Button(),
           med80Button(),
           med81Button(),
