@@ -3,6 +3,7 @@ import 'package:predoc1/states/authen.dart';
 import 'package:predoc1/states/create_account.dart';
 import 'package:predoc1/states/days.dart';
 import 'package:predoc1/states/diagnose.dart';
+import 'package:predoc1/states/disease.dart';
 import 'package:predoc1/states/med16.dart';
 import 'package:predoc1/states/med2.dart';
 import 'package:predoc1/states/level.dart';
@@ -22,6 +23,7 @@ import 'package:predoc1/states/diagnose2.dart';
 import 'package:predoc1/states/diagnose3.dart';
 import 'package:predoc1/states/diagnose4.dart';
 import 'package:predoc1/states/diagnose5.dart';
+import 'package:predoc1/states/disease.dart';
 
 Map<String, WidgetBuilder> map = {
   '/authen': (BuildContext context) => const Authen(),
@@ -34,11 +36,11 @@ Map<String, WidgetBuilder> map = {
   '/diagnose4': (BuildContext context) => const Diagnose4(),
   '/diagnose5': (BuildContext context) => const Diagnose5(),
   '/med2': (BuildContext context) => const Med2(),
-  '/med6' : (BuildContext context) => const Med6(),
-  '/med7' : (BuildContext context) => const Med7(),
+  '/med6': (BuildContext context) => const Med6(),
+  '/med7': (BuildContext context) => const Med7(),
   '/med8': (BuildContext context) => const Med8(),
   '/med9': (BuildContext context) => const Med9(),
-  '/med16' : (BuildContext context) => const Med16(),
+  '/med16': (BuildContext context) => const Med16(),
   '/med22': (BuildContext context) => const Med22(),
   '/med30': (BuildContext context) => const Med30(),
   '/med69': (BuildContext context) => const Med69(),
@@ -46,6 +48,7 @@ Map<String, WidgetBuilder> map = {
   '/days': (BuildContext context) => const Days(),
   '/select': (BuildContext context) => const Select(),
   '/nearbyHospital': (BuildContext context) => const NearbyHospital(),
+  '/disease': (BuildContext context) => const Disease(),
 };
 
 String firstPage = '/authen';
