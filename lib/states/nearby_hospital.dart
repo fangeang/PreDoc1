@@ -38,7 +38,7 @@ class _NearbyHospitalState extends State<NearbyHospital> {
           child: Column(
             children: [
               newMap(),
-              //findLocation(),
+              findHospitalbutton(),
             ],
           ),
         ),
@@ -51,6 +51,33 @@ class _NearbyHospitalState extends State<NearbyHospital> {
     // TODO: implement initState
     super.initState();
     findLocation();
+  }
+
+  Container findHospitalbutton() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      width: 250,
+      height: 50,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
+        onPressed: () => findHospital(),
+        child: const Text(
+          'Search Hospital',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+
+  Future<void> findHospital() async {
+    Position? position = await findPostion();
+    setState(
+      () {
+        lat = position!.latitude;
+        lng = position.longitude;
+        print('lat = $lat, lng = $lng');
+      },
+    );
   }
 
   Future<void> findLocation() async {
@@ -79,13 +106,14 @@ class _NearbyHospitalState extends State<NearbyHospital> {
   Container newMap() {
     return Container(
       width: 500,
-      height: 650,
+      height: 500,
       child: lat == null
           ? Center(child: CircularProgressIndicator())
           : GoogleMap(
+              myLocationEnabled: true,
               initialCameraPosition: CameraPosition(
                 target: LatLng(lat!, lng!),
-                zoom: 100,
+                zoom: 20,
               ),
               onMapCreated: (controller) {},
               markers: <Marker>{

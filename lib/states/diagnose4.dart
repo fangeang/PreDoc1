@@ -183,7 +183,7 @@ class _Diagnose4State extends State<Diagnose4> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: MyConstant.dark),
-        onPressed: () => Navigator.pushNamed(context, '/diagnose'),
+        onPressed: () => Navigator.pushNamed(context, '/'),
         child: const Text(
           'หลับตาไม่สนิท',
           style: TextStyle(fontSize: 20),
