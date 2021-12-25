@@ -38,6 +38,7 @@ class _NearbyHospitalState extends State<NearbyHospital> {
           child: Column(
             children: [
               newMap(),
+              successButton(),
             ],
           ),
         ),
@@ -51,8 +52,6 @@ class _NearbyHospitalState extends State<NearbyHospital> {
     super.initState();
     findLocation();
   }
-
-  
 
   Future<void> findHospital() async {
     Position? position = await findPostion();
@@ -111,6 +110,22 @@ class _NearbyHospitalState extends State<NearbyHospital> {
                 )
               },
             ),
+    );
+  }
+
+  Container successButton() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      width: 250,
+      height: 50,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: MyConstant.dark),
+        onPressed: () => Navigator.pushNamed(context, '/select'),
+        child: const Text(
+          'เสร็จสิ้น',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
     );
   }
 }
